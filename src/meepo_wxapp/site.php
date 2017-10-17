@@ -26,7 +26,31 @@ class Meepo_wxappModuleSite extends WeModuleSite {
 	public function doWebDownload() {
 		//这个操作被定义用来呈现 管理中心导航菜单
 		global $_W,$_GPC;
+		$file = IA_ROOT."/addons/meepo_wxapp/developer.cer";
+		load()->model('setting');
+		$setting = setting_load('site');
 
+		$result = $setting['site'];
+		if(empty($result['key'])){
+			message('请使用正版微擎应用');
+		}
+		if(empty($result['token'])){
+			message('请使用正版微擎应用');
+		}
+		if(empty($result['url'])){
+			message('请使用正版微擎应用');
+		}
+		if(empty($result['version'])){
+			message('请使用正版微擎应用');
+		}
+		if(floatval($result['version']) < 1){
+			message('微擎版本必须大于1.0');
+		}
+		$result['uniacid'] = $_W['uniacid'];
+		if(empty($result['uniacid'])){
+			message('请选择要操作的公众号');
+		}
+		$data = base64_encode(serialize($result));
 		include $this->template('download');
 	}
 	public function doWebHelp() {
