@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarContainerService } from './services/sidebar-container.service';
 import { DropdownsService } from './services/dropdowns.service';
 
+
 @Component({
     selector: 'builder-root',
     templateUrl: './builder.component.html',
@@ -14,10 +15,20 @@ export class BuilderComponent implements OnInit {
         public sidebar$: SidebarContainerService,
         public dropdowns$: DropdownsService
     ) { }
-    ngOnInit() { }
+    
+    ngOnInit() { 
+    }
 
     onItem(e) {
         console.log(e);
+    }
+
+    checkUpload(){
+
+    }
+
+    download(){
+
     }
 
     openSidebar() {

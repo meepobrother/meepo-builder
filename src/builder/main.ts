@@ -5,10 +5,7 @@ import { BuilderModule } from './app/builder.module';
 import { environment } from './environments/environment';
 
 import 'hammerjs';
-
-if (environment.production) {
-    enableProdMode();
-}
+console.log(__dirname);
 
 platformBrowserDynamic().bootstrapModule(BuilderModule)
     .catch(err => console.log(err));
